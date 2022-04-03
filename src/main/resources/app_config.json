@@ -1,0 +1,66 @@
+{
+	"ScraperCommonConfig" : {
+		"webDriverPath":"C:\\Sathish\\Software\\chromedriver_win32_100\\chromedriver.exe",
+		"numberOfJobsRunParallel":"2",
+		"cronExpression":"0 0/5 * * * ?",
+		"outputType":"csv"
+	},
+	"WebScrapper": [
+		{
+		    "websiteName":"somniumspace",
+			"url": "https://somniumspace.com/events",
+			"urlLoadWaitTime": "5000",
+			"elements": {
+				"eventList": "//*[@id=\"root\"]/div[2]/div[2]/div/div[@class='styles_card__1ImMO']",
+				"findBy": "XPATH",
+				"ElementDetail": [
+					{
+						"elementName": "Date",
+						"findBy": "XPATH",
+						"elementValue": ".//div[@class='styles_infoHeader__KQn-l']/div[@class='styles_data__1fnM4']/span[1]"
+					},
+					{
+						"elementName": "Title",
+						"findBy": "CLASSNAME",
+						"elementValue": "styles_description__3T6wh"
+					},
+					{
+						"elementName": "EventLink",
+						"findBy": "ACTION",
+						"actionDetail": {
+							"action": "click",
+							"elementValue": "driver.url",
+							"actionClose": "Keys.ESCAPE"
+						}
+					}
+				]
+			}
+		},
+		{
+			"websiteName":"decentraland",
+			"url": "https://events.decentraland.org/",
+			"urlLoadWaitTime": "5000",
+			"elements": {
+				"eventList": "//*[@id=\"gatsby-focus-wrapper\"]/main/div[2]/div[4]/a",
+				"findBy": "XPATH",
+				"ElementDetail": [
+					{
+						"elementName": "Date",
+						"findBy": "XPATH",
+						"elementValue": ".//div[@class='content']/div/div[@class='EventDate']"
+					},
+					{
+						"elementName": "Title",
+						"findBy": "XPATH",
+						"elementValue": ".//div[@class='content']/div[@class='header']"
+					},
+					{
+						"elementName": "EventLink",
+						"findBy": "ATTRIBUTE",
+						"elementValue": "href"
+					}
+				]
+			}
+		}
+	]
+}
